@@ -2,10 +2,20 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Tu cham diem - Ma de 11301",
+      "type": "process",
+      "command": "${command:python.interpreterPath}",
+      "args": ["autograde_11301.py"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "presentation": {"echo": true, "reveal": "always", "focus": true, "panel": "dedicated", "clear": false},
+      "problemMatcher": [],
+      "group": {"kind": "build", "isDefault": true}
+    },
+    {
       "label": "Chay Cau 1",
       "type": "process",
       "command": "${command:python.interpreterPath}",
-      "args": ["HOTEN_MSSV/Cau1.py"],
+      "args": ["run_question_11301.py", "1"],
       "options": {"cwd": "${workspaceFolder}"},
       "presentation": {"reveal": "always", "focus": true},
       "problemMatcher": []
@@ -14,7 +24,7 @@
       "label": "Chay Cau 2",
       "type": "process",
       "command": "${command:python.interpreterPath}",
-      "args": ["HOTEN_MSSV/Cau2.py"],
+      "args": ["run_question_11301.py", "2"],
       "options": {"cwd": "${workspaceFolder}"},
       "presentation": {"reveal": "always", "focus": true},
       "problemMatcher": []
@@ -23,7 +33,7 @@
       "label": "Chay Cau 3",
       "type": "process",
       "command": "${command:python.interpreterPath}",
-      "args": ["HOTEN_MSSV/Cau3.py"],
+      "args": ["run_question_11301.py", "3"],
       "options": {"cwd": "${workspaceFolder}"},
       "presentation": {"reveal": "always", "focus": true},
       "problemMatcher": []
@@ -32,7 +42,7 @@
       "label": "Chay Cau 4",
       "type": "process",
       "command": "${command:python.interpreterPath}",
-      "args": ["HOTEN_MSSV/Cau4.py"],
+      "args": ["run_question_11301.py", "4"],
       "options": {"cwd": "${workspaceFolder}"},
       "presentation": {"reveal": "always", "focus": true},
       "problemMatcher": []
@@ -41,7 +51,16 @@
       "label": "Chay Cau 5",
       "type": "process",
       "command": "${command:python.interpreterPath}",
-      "args": ["HOTEN_MSSV/Cau5.py"],
+      "args": ["run_question_11301.py", "5"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "presentation": {"reveal": "always", "focus": true},
+      "problemMatcher": []
+    },
+    {
+      "label": "Kiem thu bo tu cham",
+      "type": "process",
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "unittest", "-v", "test_autograde_11301.py"],
       "options": {"cwd": "${workspaceFolder}"},
       "presentation": {"reveal": "always", "focus": true},
       "problemMatcher": []

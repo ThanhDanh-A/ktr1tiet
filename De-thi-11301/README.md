@@ -1,46 +1,60 @@
-# Đề thi Lập trình Python - Mã đề 11301
+# De thi Lap trinh Python - Ma de 11301
 
-Bộ lời giải theo PDF môn Lập trình Python (229152), mã đề **11301**, thời gian 90 phút, gồm 5 câu, mỗi câu 2 điểm.
+Bo loi giai cho PDF mon Lap trinh Python (229152), ma de 11301. De gom 5 cau, moi cau 2 diem.
 
-## Cấu trúc nộp bài
+## Tu cham bang dau tich va dau X trong VS Code
 
-Đề yêu cầu folder `HOTEN_MSSV` chứa đúng 5 file `.py`:
+1. Cai Python 3.9 tro len va extension Python cua Microsoft trong VS Code.
+2. Mo VS Code > File > Open Folder > chon thu muc De-thi-11301 (thu muc co autograde_11301.py).
+3. Nhan Ctrl + Shift + P > Python: Select Interpreter > chon ban Python da cai.
+4. Nhan Ctrl + Shift + B.
+5. Xem ket qua trong Terminal: moi tieu chi co ✅ neu dat, ❌ neu chua dat, diem du kien va ghi chu cach sua.
 
-- `Cau1.py`
-- `Cau2.py`
-- `Cau3.py`
-- `Cau4.py`
-- `Cau5.py`
+Lenh Terminal tuong duong: python autograde_11301.py
 
-Đổi tên `HOTEN_MSSV` thành họ tên và MSSV thật của em trước khi nộp.
+Bo tu cham tu tim thu muc co du Cau1.py den Cau5.py. Em co the doi ten HOTEN_MSSV thanh ho ten va MSSV truoc khi cham; khong can sua duong dan.
 
-## Chạy trên VS Code
+## Chay rieng tung cau
 
-1. Giải nén ZIP hoặc tải repository về máy.
-2. Mở VS Code → File → Open Folder → chọn thư mục `De-thi-11301`.
-3. Cài extension Python của Microsoft và chọn Python Interpreter (Python 3.9 trở lên).
-4. Mở một file trong `HOTEN_MSSV` và nhấn **Run Python File**.
+Trong VS Code nhan Ctrl + Shift + P > Tasks: Run Task > chon Chay Cau 1 den Chay Cau 5. Cac task nay cung tu tim thu muc bai lam sau khi em doi ten.
 
-Có thể chạy từng câu bằng Terminal tại thư mục gốc:
+Hoac mo file trong thu muc bai lam va chon Run Python File.
 
-```powershell
-python HOTEN_MSSV/Cau1.py
-python HOTEN_MSSV/Cau2.py
-python HOTEN_MSSV/Cau3.py
-python HOTEN_MSSV/Cau4.py
-python HOTEN_MSSV/Cau5.py
-```
+## Kiem tra bo cham
 
-Hoặc chọn **Terminal → Run Task** và chọn câu muốn chạy.
+Chay cac bai test tu dong cua bo cham:
 
-## Nội dung
+python -m unittest -v test_autograde_11301.py
 
-| File | Nội dung | Điểm |
-|---|---|---:|
-| Cau1.py | Kiểm tra n trong [1;1500], đếm chữ số lẻ, tính S = 1/2 + 1/4 + ... + 1/(2n) | 2.0 |
-| Cau2.py | Đếm chữ hoa, kiểm tra chuỗi đối xứng, tính tổng chữ số | 2.0 |
-| Cau3.py | Nhập list đến khi nhập 0, tổng số dương chẵn, đếm số lần xuất hiện của k | 2.0 |
-| Cau4.py | Lưu thông tin sách trong dictionary và xóa sách theo mã | 2.0 |
-| Cau5.py | Tạo class DienThoai và hai đối tượng đúng dữ liệu đề bài | 2.0 |
+## Cau truc nop bai theo yeu cau PDF
 
-Code bám theo đề và phần đáp án/rubric ở các trang cuối của PDF mã đề 11301. Điểm chính thức vẫn do giảng viên chấm.
+De yeu cau thu muc HOTEN_MSSV chua dung 5 file .py:
+
+HOTEN_MSSV/
+  Cau1.py
+  Cau2.py
+  Cau3.py
+  Cau4.py
+  Cau5.py
+
+Doi ten HOTEN_MSSV thanh ho ten va MSSV that cua em truoc khi nop.
+
+## Bo cham danh gia dieu gi?
+
+Cau 1a - kiem tra n trong [1;1500]: 0.50
+Cau 1b - ham dem chu so le: 0.75
+Cau 1c - ham tinh S: 0.75
+Cau 2a - dem chu hoa: 0.75
+Cau 2b - kiem tra chuoi doi xung: 0.50
+Cau 2c - tinh tong chu so: 0.75
+Cau 3a - nhap list den khi gap 0: 0.75
+Cau 3b - tong so duong chan: 0.75
+Cau 3c - dem so lan xuat hien cua k: 0.50
+Cau 4a - nhap va luu thong tin sach: 1.50
+Cau 4b - xoa sach theo ma: 0.50
+Cau 5a - lop DienThoai va thuoc tinh/phuong thuc: 1.00
+Cau 5b - tao hai doi tuong va hien thi thong tin: 1.00
+
+Tong: 10.00 diem.
+
+Luu y: Day la bo tu kiem tra tham khao duoc viet theo de va dap an/rubric trong PDF, khong phai chuong trinh cham chinh thuc cua giang vien. Bo cham dung mot so bo du lieu thu, co the khong bao phu moi truong hop ma giang vien su dung. Khong can cai thu vien ben ngoai bang pip.

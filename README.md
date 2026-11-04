@@ -1,26 +1,22 @@
-# Python Coursework - ThanhDanh-A 🐍
+# Python Coursework - ThanhDanh-A
 
-## Bài thầy chấm theo PDF mới nhất: Mã đề 11301
+## Bai thay cham theo PDF moi nhat: Ma de 11301
 
-Bài cần làm theo PDF môn **Lập trình Python (229152)**, mã đề **11301**, gồm 5 câu, mỗi câu 2 điểm. Đề yêu cầu thư mục `HOTEN_MSSV` chứa đúng 5 file `.py`.
+Bai can lam theo PDF mon Lap trinh Python (229152), ma de 11301, gom 5 cau. De yeu cau thu muc HOTEN_MSSV chua dung 5 file .py.
 
-➡️ **[Hướng dẫn và lời giải Đề 11301](De-thi-11301/README.md)**
+Huong dan, loi giai va bo tu cham: De-thi-11301/README.md
 
-Cấu trúc nộp bài:
+### Tu cham trong VS Code
 
-```text
-HOTEN_MSSV/
-├── Cau1.py
-├── Cau2.py
-├── Cau3.py
-├── Cau4.py
-└── Cau5.py
-```
+1. Mo thu muc De-thi-11301 bang VS Code.
+2. Chon Python Interpreter.
+3. Nhan Ctrl + Shift + B.
+4. Xem ✅ / ❌ theo tung tieu chi, ghi chu va diem du kien tren thang 10.
 
-Mở thư mục `De-thi-11301` trong Visual Studio Code, chọn file cần chạy hoặc dùng **Terminal → Run Task** để chạy từng câu.
+Lenh Terminal tuong duong: python autograde_11301.py
 
-> Đổi tên `HOTEN_MSSV` thành họ tên và MSSV thật trước khi nộp. PDF gốc được đính kèm trong file ZIP của đề.
+Luu y: Bo tu cham chi la cong cu tham khao theo dap an/rubric trong PDF, khong thay the diem chinh thuc cua giang vien.
 
-## Bài luyện riêng từ gói ZIP cũ
+## Bai luyen rieng tu goi ZIP cu
 
-Thư mục `De-01-CBPYTHON` là bài luyện khác lấy từ gói ZIP trước đó. **Đây không phải mã đề 11301 trong PDF mới**. Không dùng nhầm thư mục này khi nộp bài thi 11301.
+Thu muc De-01-CBPYTHON la bai luyen khac tu goi ZIP truoc do. Day khong phai ma de 11301 trong PDF moi. Khong dung nham thu muc nay khi nop bai thi 11301.
