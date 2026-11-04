@@ -1,0 +1,50 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Chay Cau 1",
+      "type": "process",
+      "command": "${command:python.interpreterPath}",
+      "args": ["HOTEN_MSSV/Cau1.py"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "presentation": {"reveal": "always", "focus": true},
+      "problemMatcher": []
+    },
+    {
+      "label": "Chay Cau 2",
+      "type": "process",
+      "command": "${command:python.interpreterPath}",
+      "args": ["HOTEN_MSSV/Cau2.py"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "presentation": {"reveal": "always", "focus": true},
+      "problemMatcher": []
+    },
+    {
+      "label": "Chay Cau 3",
+      "type": "process",
+      "command": "${command:python.interpreterPath}",
+      "args": ["HOTEN_MSSV/Cau3.py"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "presentation": {"reveal": "always", "focus": true},
+      "problemMatcher": []
+    },
+    {
+      "label": "Chay Cau 4",
+      "type": "process",
+      "command": "${command:python.interpreterPath}",
+      "args": ["HOTEN_MSSV/Cau4.py"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "presentation": {"reveal": "always", "focus": true},
+      "problemMatcher": []
+    },
+    {
+      "label": "Chay Cau 5",
+      "type": "process",
+      "command": "${command:python.interpreterPath}",
+      "args": ["HOTEN_MSSV/Cau5.py"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "presentation": {"reveal": "always", "focus": true},
+      "problemMatcher": []
+    }
+  ]
+}

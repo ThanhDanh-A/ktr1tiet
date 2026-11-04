@@ -1,18 +1,26 @@
-# Kiểm tra Python - Thanh Danh 🐍
+# Python Coursework - ThanhDanh-A 🐍
 
-Repository lưu bài thực hành Python theo từng đề. Hiện tại đã hoàn thiện **Đề số 01 - CBPYTHON** gồm 10 bài, bộ chấm tự động và cấu hình chạy trên Visual Studio Code.
+## Bài thầy chấm theo PDF mới nhất: Mã đề 11301
 
-## Mở và chấm bài
+Bài cần làm theo PDF môn **Lập trình Python (229152)**, mã đề **11301**, gồm 5 câu, mỗi câu 2 điểm. Đề yêu cầu thư mục `HOTEN_MSSV` chứa đúng 5 file `.py`.
 
-1. Tải ZIP hoặc clone repository về máy.
-2. Mở trực tiếp thư mục `De-01-CBPYTHON` trong VS Code.
-3. Cài extension Python của Microsoft và chọn Python Interpreter.
-4. Nhấn **Ctrl + Shift + B** để chạy bộ chấm; hoặc mở Terminal và chạy `python autograde_de1_v2.py`.
+➡️ **[Hướng dẫn và lời giải Đề 11301](De-thi-11301/README.md)**
 
-Hướng dẫn đầy đủ ở [README của Đề 01](De-01-CBPYTHON/README.md).
+Cấu trúc nộp bài:
 
-## Yêu cầu
+```text
+HOTEN_MSSV/
+├── Cau1.py
+├── Cau2.py
+├── Cau3.py
+├── Cau4.py
+└── Cau5.py
+```
 
-Python 3.9 trở lên. Không cần cài package bên ngoài.
+Mở thư mục `De-thi-11301` trong Visual Studio Code, chọn file cần chạy hoặc dùng **Terminal → Run Task** để chạy từng câu.
 
-> Điểm bộ chấm hiển thị là điểm kiểm thử cục bộ theo dữ liệu đi kèm, không phải điểm chính thức trên hệ thống giảng viên.
+> Đổi tên `HOTEN_MSSV` thành họ tên và MSSV thật trước khi nộp. PDF gốc được đính kèm trong file ZIP của đề.
+
+## Bài luyện riêng từ gói ZIP cũ
+
+Thư mục `De-01-CBPYTHON` là bài luyện khác lấy từ gói ZIP trước đó. **Đây không phải mã đề 11301 trong PDF mới**. Không dùng nhầm thư mục này khi nộp bài thi 11301.
