@@ -29,6 +29,8 @@ def normalize(value: Any) -> str:
 def run_code(file_path: Path, input_data: str) -> tuple[list[str], str | None]:
     """Chay mot file bai lam voi du lieu vao cua mot test case."""
     try:
+        child_env = os.environ.copy()
+        child_env["PYTHONIOENCODING"] = "utf-8"
         result = subprocess.run(
             [sys.executable, str(file_path)],
             input=input_data,
@@ -40,6 +42,7 @@ def run_code(file_path: Path, input_data: str) -> tuple[list[str], str | None]:
             timeout=3,
             check=False,
             cwd=ROOT,
+            env=child_env,
         )
     except subprocess.TimeoutExpired:
         return [], "Qua thoi gian 3 giay"

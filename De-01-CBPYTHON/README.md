@@ -1,36 +1,51 @@
 # Đề số 01 - CBPYTHON 🐍
 
-Bài giải cho **Đề số 01 - CBPYTHON** cùng bộ chấm tự động cục bộ dựa trên các test case trong tài liệu giảng viên cung cấp.
+Bộ bài giải cho **Đề số 01 - CBPYTHON** và bộ chấm tự động chạy trực tiếp trong Visual Studio Code.
 
-## Chấm tự động trong VS Code
+## 1. Chuẩn bị một lần
 
-1. Giải nén repository hoặc tải ZIP về máy.
-2. Mở VS Code → **File → Open Folder** → chọn trực tiếp thư mục `De-01-CBPYTHON`.
-3. Mở **Terminal → New Terminal**.
-4. Chạy lệnh:
+1. Cài Python 3.9 trở lên. Trên Windows, nên chọn **Add Python to PATH** khi cài.
+2. Cài Visual Studio Code.
+3. Trong VS Code → Extensions, cài extension **Python** của Microsoft (`ms-python.python`).
+4. Chọn **File → Open Folder** và mở đúng thư mục **De-01-CBPYTHON** (thư mục có file `autograde_de1_v2.py`).
+5. Nhấn `Ctrl + Shift + P`, chọn **Python: Select Interpreter**, rồi chọn phiên bản Python đã cài.
 
-   ```bash
-   python autograde_de1_v2.py
-   ```
+## 2. Chấm điểm cả đề bằng một phím tắt
 
-5. Nhập họ tên, MSSV và số máy (có thể nhấn Enter để bỏ qua số máy).
-6. Chương trình tự chạy test cho 10 file và in PASS/FAIL cùng tổng điểm trên thang 10.
+1. Nhấn **Ctrl + Shift + B**.
+2. Terminal của VS Code sẽ mở và hỏi họ tên, MSSV, số máy.
+3. Nhập thông tin; nếu không có số máy thì nhấn Enter.
+4. Xem PASS/FAIL từng test và dòng **TONG DIEM** khi chương trình chạy xong.
 
-Nếu máy dùng lệnh `py` thay cho `python`, chạy:
+Task đã được cấu hình trong `.vscode/tasks.json` và sử dụng đúng interpreter em chọn trong VS Code. Terminal được mở ở chế độ nhận nhập liệu để em điền thông tin.
 
-```bash
+## 3. Chấm điểm bằng Terminal nếu phím tắt không chạy
+
+Chọn **Terminal → New Terminal**, bảo đảm terminal đang ở thư mục `De-01-CBPYTHON`, rồi chạy:
+
+```powershell
+python autograde_de1_v2.py
+```
+
+Nếu Windows không nhận lệnh `python`, thử:
+
+```powershell
 py autograde_de1_v2.py
 ```
 
-**Phím tắt trong VS Code:** nhấn **Ctrl + Shift + B** để chạy task `Chấm điểm tự động - Đề 01 CBPYTHON` đã cấu hình sẵn.
+Trên macOS/Linux, thử:
 
-## Chạy riêng từng câu
+```bash
+python3 autograde_de1_v2.py
+```
 
-Mở thư mục `submissions_de1`, chọn `Cau1a.py`, `Cau1b.py`, ... rồi nhấn **Run Python File**. Cách này chỉ chạy một bài riêng lẻ; muốn chấm cả đề thì chạy `autograde_de1_v2.py`.
+## 4. Chạy riêng một câu
 
-## Các bài trong đề
+Mở file trong `submissions_de1`, sau đó bấm **Run Python File**. Cách này chỉ chạy riêng câu đó, không chấm tổng điểm. Muốn chấm cả đề, dùng `autograde_de1_v2.py`.
 
-| Câu | Nội dung chính | File |
+## 5. Các bài trong đề
+
+| Câu | Nội dung | File |
 |---|---|---|
 | 1a | Kiểm tra chẵn/lẻ | `submissions_de1/Cau1a.py` |
 | 1b | Nhập tên, tuổi và in lời chào | `submissions_de1/Cau1b.py` |
@@ -43,23 +58,39 @@ Mở thư mục `submissions_de1`, chọn `Cau1a.py`, `Cau1b.py`, ... rồi nh�
 | 5a | Đếm tần suất ký tự bằng dictionary | `submissions_de1/Cau5a.py` |
 | 5b | Lọc học sinh theo điểm | `submissions_de1/Cau5b.py` |
 
-## Các file kiểm tra
+## 6. Kiểm tra bộ chấm và bài làm
 
-- `autograde_de1_v2.py`: bộ chấm, tự chạy chương trình của từng câu với dữ liệu vào và đối chiếu đầu ra.
-- `test_de1.py`: bộ dữ liệu test theo tài liệu thầy gửi, đã chỉnh lại phần chú thích cho khớp PDF.
-- `test_autograder.py`: kiểm tra chính logic chấm để bảo đảm thiếu một dòng kết quả sẽ không được tính PASS.
-- `kiem_thu.py`: bộ tự kiểm tra phụ, in PASS/FAIL cho từng bài.
+Kiểm tra logic của bộ chấm:
 
-Bộ chấm chỉ dùng thư viện chuẩn của Python, không cần `pip install` thêm. Khuyến nghị Python 3.9 trở lên.
+```bash
+python -m unittest -v test_autograder.py
+```
 
-## Lưu ý về chấm điểm
+Chạy bộ tự kiểm tra 10 bài:
 
-Bản trước có lỗi khi so sánh kết quả: nếu một test mong đợi nhiều dòng, nó chỉ cần khớp một dòng là có thể được tính PASS; trường hợp kết quả mong đợi là một chuỗi cũng bị duyệt từng ký tự. Bản hiện tại đã sửa để:
+```bash
+python kiem_thu.py
+```
 
-- Chuỗi mong đợi phải khớp cả cụm nội dung.
-- Danh sách nhiều kết quả phải khớp **đầy đủ từng dòng** và không dùng một dòng output để tính cho nhiều kết quả.
-- Dictionary được phân tích và so sánh giá trị thực tế.
+Hai lệnh trên là kiểm tra phụ. Để lấy điểm theo test của đề, chạy `python autograde_de1_v2.py`.
 
-**Điểm hiển thị là kết quả của bộ test cục bộ trong gói tài liệu, không phải xác nhận điểm chính thức trên hệ thống của giảng viên.**
+## 7. Cấu trúc thư mục
 
-Câu 1a trong PDF ghi “số thực” nhưng chẵn/lẻ chỉ xác định rõ cho số nguyên. Bài làm xử lý các số nguyên và số thực có phần thập phân bằng 0; với số thập phân không nguyên, bài đưa vào nhánh `Le` theo cách diễn giải của đề kiểm thử.
+```text
+De-01-CBPYTHON/
+├── .vscode/
+│   ├── extensions.json
+│   └── tasks.json
+├── De-bai.pdf
+├── README.md
+├── autograde_de1_v2.py
+├── test_de1.py
+├── test_autograder.py
+├── kiem_thu.py
+└── submissions_de1/
+    ├── Cau1a.py ... Cau5b.py
+```
+
+## Lưu ý về điểm số
+
+Điểm hiển thị là kết quả chạy bộ test cục bộ trong gói tài liệu, không phải điểm chính thức trên hệ thống của giảng viên. Bộ chấm cần Python 3.9 trở lên, chỉ dùng thư viện chuẩn và không cần cài thêm package bằng pip.

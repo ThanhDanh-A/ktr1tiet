@@ -1,8 +1,11 @@
 """Kiem tra logic cua bo cham: tranh tinh PASS sai khi thieu output."""
 
 import unittest
+from pathlib import Path
 
-from autograde_de1_v2 import matches_expected
+from autograde_de1_v2 import matches_expected, run_code
+
+ROOT = Path(__file__).resolve().parent
 
 
 class TestExpectedMatching(unittest.TestCase):
@@ -29,6 +32,15 @@ class TestExpectedMatching(unittest.TestCase):
         expected = {"a": 2, "b": 1}
         self.assertTrue(matches_expected(["{'a': 2, 'b': 1}"], expected))
         self.assertFalse(matches_expected(["{'a': 2, 'b': 2}"], expected))
+
+    def test_subprocess_preserves_vietnamese_text(self):
+        script = ROOT / "submissions_de1" / "Cau1b.py"
+        output, error = run_code(script, "Trần Danh\n20\n")
+        self.assertIsNone(error)
+        self.assertTrue(
+            any("Xin chào Trần Danh, bạn 20 tuổi." in line for line in output),
+            msg=f"Output khong dung tieng Viet: {output!r}",
+        )
 
 
 if __name__ == "__main__":
