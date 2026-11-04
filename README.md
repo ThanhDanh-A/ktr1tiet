@@ -1,17 +1,22 @@
-# Kiem tra Python - Thanh Danh
+# Kiểm tra Python - Thanh Danh 🐍
 
-Kho bai tap Python duoc sap xep theo tung de. Hien tai da co loi giai va huong dan chay cho **De so 01 - CBPYTHON**.
+Kho bài tập Python được sắp xếp theo từng đề. Hiện tại đã có lời giải và hướng dẫn chạy cho **Đề số 01 - CBPYTHON**.
 
-## De da hoan thanh
+## Đề đã hoàn thành
 
-- [De so 01 - CBPYTHON](De-01-CBPYTHON/README.md): 10 y nho, tu Cau 1a den Cau 5b.
-- Co script kiem thu de chay thu tat ca cac cau.
-- Khong can cai them thu vien Python ben ngoai.
+- [Đề số 01 - CBPYTHON](De-01-CBPYTHON/README.md): 10 ý nhỏ, từ Câu 1a đến Câu 5b.
+- Có bộ chấm tự động dựa trên file kiểm thử đi kèm tài liệu giảng viên.
+- Có hướng dẫn chạy trên Visual Studio Code và phím tắt chấm bài.
 
-## Cach su dung
+## Chấm tự động trong VS Code
 
-Mo thu muc de bai trong VS Code, chon file trong `submissions_de1` de chay rieng tung cau. De kiem tra tat ca cac cau, xem huong dan trong README cua de.
+1. Mở trực tiếp thư mục `De-01-CBPYTHON` bằng VS Code.
+2. Chọn **Terminal → New Terminal**.
+3. Chạy `python autograde_de1_v2.py`.
+4. Nhập thông tin sinh viên; chương trình sẽ chạy test và in điểm trên thang 10.
 
-## Moi truong
+Có thể nhấn **Ctrl + Shift + B** để gọi task chấm điểm đã cấu hình sẵn.
 
-Python 3.9 tro len.
+## Môi trường
+
+Python 3.9 trở lên. Không cần cài thư viện ngoài.

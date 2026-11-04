@@ -1,74 +1,56 @@
-# De so 01 - CBPYTHON 🐍
+# Đề số 01 - CBPYTHON 🐍
 
-Bai lam Python cho **De so 01 - CBPYTHON** (60 phut, 5 cau, moi cau 2 diem).
+Bài giải cho **Đề số 01 - CBPYTHON** cùng bộ chấm tự động dựa trên các test mà giảng viên cung cấp.
 
-## Noi dung
+## Cách chấm tự động trong VS Code
 
-| Cau | Kien thuc | File |
+**Cách 1 — chạy bằng Terminal (dễ nhất):**
+
+1. Giải nén repository hoặc tải ZIP về máy.
+2. Mở VS Code → **File → Open Folder** → chọn trực tiếp thư mục `De-01-CBPYTHON`.
+3. Mở **Terminal → New Terminal**.
+4. Gõ lệnh:
+
+   ```bash
+   python autograde_de1_v2.py
+   ```
+
+5. Nhập họ tên, MSSV và số máy (nếu chưa có số máy thì nhấn Enter).
+6. Chương trình tự chạy các test cho 10 file và in PASS/FAIL cùng tổng điểm trên thang 10.
+
+Nếu máy dùng lệnh `py` thay cho `python`, có thể chạy:
+
+```bash
+py autograde_de1_v2.py
+```
+
+**Cách 2 — dùng phím tắt:** nhấn **Ctrl + Shift + B** trong VS Code để chạy task chấm điểm đã cấu hình.
+
+**Cách 3 — chạy từng câu:** mở thư mục `submissions_de1`, chọn `Cau1a.py`, `Cau1b.py`, ... rồi nhấn **Run Python File**. Cách này chỉ chạy bài riêng lẻ; muốn chấm toàn bộ đề thì chạy `autograde_de1_v2.py`.
+
+## Các bài trong đề
+
+| Câu | Nội dung chính | File |
 |---|---|---|
-| 1a | Kieu so thuc, kiem tra chan/le | `submissions_de1/Cau1a.py` |
-| 1b | Nhap chuoi, so nguyen va f-string | `submissions_de1/Cau1b.py` |
-| 2a | Vong lap `for`, dieu kien va tinh tong | `submissions_de1/Cau2a.py` |
-| 2b | Cat chuoi theo vi tri va dem chu so | `submissions_de1/Cau2b.py` |
-| 3a | List va loc phan tu kieu chuoi | `submissions_de1/Cau3a.py` |
-| 3b | `append()`, `remove()`, `reverse()` | `submissions_de1/Cau3b.py` |
-| 4a | Tuple va chi muc am | `submissions_de1/Cau4a.py` |
-| 4b | Noi tuple va lap lai tuple | `submissions_de1/Cau4b.py` |
-| 5a | Dictionary va dem tan suat ky tu | `submissions_de1/Cau5a.py` |
-| 5b | Dictionary va loc hoc sinh theo diem | `submissions_de1/Cau5b.py` |
+| 1a | Kiểm tra chẵn/lẻ | `submissions_de1/Cau1a.py` |
+| 1b | Nhập tên, tuổi và in lời chào | `submissions_de1/Cau1b.py` |
+| 2a | Tính tổng số chẵn trong đoạn | `submissions_de1/Cau2a.py` |
+| 2b | Đếm chữ số trong đoạn chuỗi | `submissions_de1/Cau2b.py` |
+| 3a | Lọc phần tử kiểu chuỗi trong list | `submissions_de1/Cau3a.py` |
+| 3b | Thêm, xóa và đảo list | `submissions_de1/Cau3b.py` |
+| 4a | Truy cập phần tử tuple | `submissions_de1/Cau4a.py` |
+| 4b | Nối và lặp tuple | `submissions_de1/Cau4b.py` |
+| 5a | Đếm tần suất ký tự bằng dictionary | `submissions_de1/Cau5a.py` |
+| 5b | Lọc học sinh theo điểm | `submissions_de1/Cau5b.py` |
 
-## Yeu cau
+## File chấm điểm
 
-- Python 3.9 tro len.
-- Visual Studio Code va extension Python cua Microsoft.
-- Khong can cai thu vien ngoai.
+- `autograde_de1_v2.py`: chương trình chấm tự động, chạy từng file bài làm với dữ liệu kiểm thử và tính điểm.
+- `test_de1.py`: các test case của Đề 01 được lấy từ bộ tài liệu thầy cung cấp.
+- `kiem_thu.py`: bộ tự kiểm tra phụ, không thay thế bộ chấm tự động ở trên.
 
-## Chay mot cau
+Bộ chấm cần Python 3.9 trở lên và chỉ dùng thư viện chuẩn, không cần `pip install` thêm.
 
-Mo thu muc repository bang VS Code. Mo Terminal (Terminal → New Terminal), sau do chay vi du:
+## Lưu ý
 
-```bash
-python De-01-CBPYTHON/submissions_de1/Cau1a.py
-```
-
-Thay `Cau1a.py` bang file cua cau can lam. Moi file la mot chuong trinh rieng.
-
-Neu em da mo truc tiep thu muc `De-01-CBPYTHON`, co the chay ngan hon:
-
-```bash
-python submissions_de1/Cau1a.py
-```
-
-## Kiem thu ca 10 cau
-
-Tai thu muc `De-01-CBPYTHON`, chay:
-
-```bash
-python kiem_thu.py
-```
-
-Chuong trinh se hien PASS/FAIL cho tung cau. Khong can cai `pytest`.
-
-## Luu y cau 1a
-
-De bai ghi nhap so thuc, nhung tinh chan/le chi co nghia voi so nguyen. Chuong trinh nhan dau vao dang float; neu gia tri la so nguyen thi kiem tra chan/le, con so thap phan khong nguyen duoc xu ly vao nhanh `Le`. Cac bo test mau cua de su dung so nguyen.
-
-## Cau truc
-
-```text
-De-01-CBPYTHON/
-├── README.md
-├── kiem_thu.py
-├── .gitignore
-└── submissions_de1/
-    ├── Cau1a.py
-    ├── Cau1b.py
-    ├── Cau2a.py
-    ├── Cau2b.py
-    ├── Cau3a.py
-    ├── Cau3b.py
-    ├── Cau4a.py
-    ├── Cau4b.py
-    ├── Cau5a.py
-    └── Cau5b.py
-```
+Điểm hiển thị là kết quả của bộ test cục bộ trong tài liệu được cung cấp. Đây là kết quả tự kiểm tra trước khi nộp, không phải xác nhận điểm chính thức trên hệ thống của giảng viên.
