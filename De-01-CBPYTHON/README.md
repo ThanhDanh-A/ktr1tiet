@@ -1,32 +1,32 @@
 # Đề số 01 - CBPYTHON 🐍
 
-Bài giải cho **Đề số 01 - CBPYTHON** cùng bộ chấm tự động dựa trên các test mà giảng viên cung cấp.
+Bài giải cho **Đề số 01 - CBPYTHON** cùng bộ chấm tự động cục bộ dựa trên các test case trong tài liệu giảng viên cung cấp.
 
-## Cách chấm tự động trong VS Code
-
-**Cách 1 — chạy bằng Terminal (dễ nhất):**
+## Chấm tự động trong VS Code
 
 1. Giải nén repository hoặc tải ZIP về máy.
 2. Mở VS Code → **File → Open Folder** → chọn trực tiếp thư mục `De-01-CBPYTHON`.
 3. Mở **Terminal → New Terminal**.
-4. Gõ lệnh:
+4. Chạy lệnh:
 
    ```bash
    python autograde_de1_v2.py
    ```
 
-5. Nhập họ tên, MSSV và số máy (nếu chưa có số máy thì nhấn Enter).
-6. Chương trình tự chạy các test cho 10 file và in PASS/FAIL cùng tổng điểm trên thang 10.
+5. Nhập họ tên, MSSV và số máy (có thể nhấn Enter để bỏ qua số máy).
+6. Chương trình tự chạy test cho 10 file và in PASS/FAIL cùng tổng điểm trên thang 10.
 
-Nếu máy dùng lệnh `py` thay cho `python`, có thể chạy:
+Nếu máy dùng lệnh `py` thay cho `python`, chạy:
 
 ```bash
 py autograde_de1_v2.py
 ```
 
-**Cách 2 — dùng phím tắt:** nhấn **Ctrl + Shift + B** trong VS Code để chạy task chấm điểm đã cấu hình.
+**Phím tắt trong VS Code:** nhấn **Ctrl + Shift + B** để chạy task `Chấm điểm tự động - Đề 01 CBPYTHON` đã cấu hình sẵn.
 
-**Cách 3 — chạy từng câu:** mở thư mục `submissions_de1`, chọn `Cau1a.py`, `Cau1b.py`, ... rồi nhấn **Run Python File**. Cách này chỉ chạy bài riêng lẻ; muốn chấm toàn bộ đề thì chạy `autograde_de1_v2.py`.
+## Chạy riêng từng câu
+
+Mở thư mục `submissions_de1`, chọn `Cau1a.py`, `Cau1b.py`, ... rồi nhấn **Run Python File**. Cách này chỉ chạy một bài riêng lẻ; muốn chấm cả đề thì chạy `autograde_de1_v2.py`.
 
 ## Các bài trong đề
 
@@ -43,14 +43,23 @@ py autograde_de1_v2.py
 | 5a | Đếm tần suất ký tự bằng dictionary | `submissions_de1/Cau5a.py` |
 | 5b | Lọc học sinh theo điểm | `submissions_de1/Cau5b.py` |
 
-## File chấm điểm
+## Các file kiểm tra
 
-- `autograde_de1_v2.py`: chương trình chấm tự động, chạy từng file bài làm với dữ liệu kiểm thử và tính điểm.
-- `test_de1.py`: các test case của Đề 01 được lấy từ bộ tài liệu thầy cung cấp.
-- `kiem_thu.py`: bộ tự kiểm tra phụ, không thay thế bộ chấm tự động ở trên.
+- `autograde_de1_v2.py`: bộ chấm, tự chạy chương trình của từng câu với dữ liệu vào và đối chiếu đầu ra.
+- `test_de1.py`: bộ dữ liệu test theo tài liệu thầy gửi, đã chỉnh lại phần chú thích cho khớp PDF.
+- `test_autograder.py`: kiểm tra chính logic chấm để bảo đảm thiếu một dòng kết quả sẽ không được tính PASS.
+- `kiem_thu.py`: bộ tự kiểm tra phụ, in PASS/FAIL cho từng bài.
 
-Bộ chấm cần Python 3.9 trở lên và chỉ dùng thư viện chuẩn, không cần `pip install` thêm.
+Bộ chấm chỉ dùng thư viện chuẩn của Python, không cần `pip install` thêm. Khuyến nghị Python 3.9 trở lên.
 
-## Lưu ý
+## Lưu ý về chấm điểm
 
-Điểm hiển thị là kết quả của bộ test cục bộ trong tài liệu được cung cấp. Đây là kết quả tự kiểm tra trước khi nộp, không phải xác nhận điểm chính thức trên hệ thống của giảng viên.
+Bản trước có lỗi khi so sánh kết quả: nếu một test mong đợi nhiều dòng, nó chỉ cần khớp một dòng là có thể được tính PASS; trường hợp kết quả mong đợi là một chuỗi cũng bị duyệt từng ký tự. Bản hiện tại đã sửa để:
+
+- Chuỗi mong đợi phải khớp cả cụm nội dung.
+- Danh sách nhiều kết quả phải khớp **đầy đủ từng dòng** và không dùng một dòng output để tính cho nhiều kết quả.
+- Dictionary được phân tích và so sánh giá trị thực tế.
+
+**Điểm hiển thị là kết quả của bộ test cục bộ trong gói tài liệu, không phải xác nhận điểm chính thức trên hệ thống của giảng viên.**
+
+Câu 1a trong PDF ghi “số thực” nhưng chẵn/lẻ chỉ xác định rõ cho số nguyên. Bài làm xử lý các số nguyên và số thực có phần thập phân bằng 0; với số thập phân không nguyên, bài đưa vào nhánh `Le` theo cách diễn giải của đề kiểm thử.

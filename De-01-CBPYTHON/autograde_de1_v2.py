@@ -1,28 +1,36 @@
 """Cham tu dong De so 01 - CBPYTHON.
 
-Bo test test_de1.py duoc lay tu bo tai lieu giang vien cung cap.
-Chuong trinh nay giu cach cham theo tung test case cua bo cham goc,
-nhung dung Python interpreter dang chay file nay va hoi thong tin sinh vien.
+Su dung bo test trong test_de1.py. Moi test case chi duoc tinh PASS khi
+TOAN BO ket qua mong doi cua test do xuat hien trong output bai lam.
 """
+
+from __future__ import annotations
 
 import ast
 import os
 import subprocess
 import sys
+import unicodedata
+from pathlib import Path
+from typing import Any
 
 from test_de1 import tests
 
-
-def normalize(value):
-    """Chuan hoa chuoi de so sanh output, khong phan biet hoa thuong/khoang trang."""
-    return str(value).lower().replace(" ", "").replace(":", "").replace("=", "").strip()
+ROOT = Path(__file__).resolve().parent
+DEFAULT_SUBMISSIONS = ROOT / "submissions_de1"
 
 
-def run_code(file_path, input_data):
-    """Chay mot bai voi input test va tra ve cac dong output."""
+def normalize(value: Any) -> str:
+    """Chuan hoa chuoi: Unicode NFC, khong phan biet hoa thuong/khoang trang."""
+    value = unicodedata.normalize("NFC", str(value)).casefold()
+    return "".join(value.split())
+
+
+def run_code(file_path: Path, input_data: str) -> tuple[list[str], str | None]:
+    """Chay mot file bai lam voi du lieu vao cua mot test case."""
     try:
         result = subprocess.run(
-            [sys.executable, file_path],
+            [sys.executable, str(file_path)],
             input=input_data,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
@@ -31,62 +39,89 @@ def run_code(file_path, input_data):
             errors="replace",
             timeout=3,
             check=False,
+            cwd=ROOT,
         )
-        if result.returncode != 0:
-            error_lines = [line.strip() for line in result.stderr.splitlines() if line.strip()]
-            return [], " | ".join(error_lines) or f"Chuong trinh ket thuc voi ma loi {result.returncode}"
-        output = [line.strip() for line in result.stdout.splitlines() if line.strip()]
-        return output, None
     except subprocess.TimeoutExpired:
         return [], "Qua thoi gian 3 giay"
     except OSError as error:
-        return [], str(error)
+        return [], f"Khong the chay file: {error}"
+
+    if result.returncode != 0:
+        error_lines = [line.strip() for line in result.stderr.splitlines() if line.strip()]
+        message = " | ".join(error_lines) or f"Ma loi {result.returncode}"
+        return [], message
+
+    output = [line.strip() for line in result.stdout.splitlines() if line.strip()]
+    return output, None
 
 
-def test_dict_output(output, expected_dict):
-    for line in output:
-        try:
-            parsed = ast.literal_eval(line)
-            if isinstance(parsed, dict) and parsed == expected_dict:
+def _matches_one(output_lines: list[str], expected: Any) -> bool:
+    """Kiem tra mot gia tri mong doi co nam trong output hay khong."""
+    if isinstance(expected, dict):
+        for line in output_lines:
+            try:
+                actual = ast.literal_eval(line)
+            except (ValueError, SyntaxError):
+                continue
+            if isinstance(actual, dict) and actual == expected:
                 return True
-        except (ValueError, SyntaxError):
-            continue
-    return False
+        return False
+
+    expected_text = normalize(expected)
+    return any(expected_text in normalize(line) for line in output_lines)
 
 
-def test_normal_output(output, expected):
-    expected_norm = normalize(expected)
-    return any(expected_norm in normalize(line) for line in output)
+def matches_expected(output_lines: list[str], expected: Any) -> bool:
+    """Voi expected dang list, bat buoc phai khop tat ca cac dong mong doi.
+
+    Cac dong duoc ghep voi cac dong output khac nhau de tranh mot dong output
+    bi dung lap lai de lam PASS nhieu ket qua.
+    """
+    if not isinstance(expected, list):
+        return _matches_one(output_lines, expected)
+
+    unused_indexes = set(range(len(output_lines)))
+    for expected_item in expected:
+        matched_index = None
+        for index in sorted(unused_indexes):
+            if _matches_one([output_lines[index]], expected_item):
+                matched_index = index
+                break
+        if matched_index is None:
+            return False
+        unused_indexes.remove(matched_index)
+    return True
 
 
-def grade(student_name="Chua nhap", student_id="Chua nhap", machine_no="Chua nhap", base_dir="submissions_de1"):
+def grade(
+    student_name: str = "Chua nhap",
+    student_id: str = "Chua nhap",
+    machine_no: str = "Chua nhap",
+    base_dir: str | os.PathLike[str] | None = None,
+) -> float:
+    """Cham 10 bai, moi bai toi da 1 diem; tra ve tong diem tren thang 10."""
+    submissions_dir = Path(base_dir) if base_dir is not None else DEFAULT_SUBMISSIONS
+    if not submissions_dir.is_absolute():
+        submissions_dir = ROOT / submissions_dir
+
     total_score = 0.0
     print(f"\nBat dau cham De so 01 - CBPYTHON cho: {student_name} ({student_id})\n")
-    print("=" * 58)
+    print("=" * 62)
 
     for question, testcases in tests.items():
-        file_path = os.path.join(base_dir, f"{question}.py")
-        print(f"\n{question.upper()}")
-
-        if not os.path.isfile(file_path):
-            print(f"  FAIL: Khong tim thay file {file_path}")
-            continue
-
+        file_path = submissions_dir / f"{question}.py"
         case_list = testcases if isinstance(testcases, list) else [testcases]
         correct = 0
 
-        for index, test in enumerate(case_list, start=1):
-            output, error = run_code(file_path, test["input"])
-            passed = False
+        print(f"\n{question.upper()}")
+        if not file_path.is_file():
+            print(f"  FAIL: Khong tim thay file {file_path}")
+            print(f"  Diem cau: 0/{len(case_list)} test = 0.00/1.00")
+            continue
 
-            if error is None:
-                for expected in test["expected"]:
-                    if isinstance(expected, dict):
-                        passed = test_dict_output(output, expected)
-                    else:
-                        passed = test_normal_output(output, expected)
-                    if passed:
-                        break
+        for index, test in enumerate(case_list, start=1):
+            output, error = run_code(file_path, test.get("input", ""))
+            passed = error is None and matches_expected(output, test.get("expected"))
 
             if passed:
                 correct += 1
@@ -97,21 +132,22 @@ def grade(student_name="Chua nhap", student_id="Chua nhap", machine_no="Chua nha
                     print(f"         Loi: {error}")
                 elif output:
                     print(f"         Output nhan duoc: {output}")
+                    print(f"         Can co: {test.get('expected')!r}")
                 else:
-                    print("         Khong co output")
+                    print(f"         Khong co output. Can co: {test.get('expected')!r}")
 
         question_score = correct / len(case_list) if case_list else 0.0
         total_score += question_score
         print(f"  Diem cau: {correct}/{len(case_list)} test = {question_score:.2f}/1.00")
 
-    print("\n" + "=" * 58)
+    print("\n" + "=" * 62)
     print("KET QUA CHAM BAI")
     print(f"Sinh vien : {student_name}")
     print(f"MSSV      : {student_id}")
     print(f"So may    : {machine_no or 'Chua nhap'}")
     print("De so     : 01 - CBPYTHON")
     print(f"TONG DIEM : {total_score:.2f}/10.00")
-    print("=" * 58)
+    print("=" * 62)
     return total_score
 
 

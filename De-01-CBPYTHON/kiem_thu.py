@@ -41,7 +41,7 @@ def contains_line(value):
 def main():
     checks = [
         ("Cau1a.py", [("4\n", contains_line("Chan")), ("7\n", contains_line("Le")), ("0\n", contains_line("Chan")), ("-3\n", contains_line("Le"))]),
-        ("Cau1b.py", [("An\n20\n", contains_line("Xin chao An, ban 20 tuoi.")), ("Long\n18\n", contains_line("Xin chao Long, ban 18 tuoi."))]),
+        ("Cau1b.py", [("An\n20\n", contains_line("Xin chào An, bạn 20 tuổi.")), ("Long\n18\n", contains_line("Xin chào Long, bạn 18 tuổi."))]),
         ("Cau2a.py", [("2\n10\n", contains_line("30")), ("5\n11\n", contains_line("24")), ("3\n3\n", contains_line("0")), ("-2\n2\n", contains_line("0"))]),
         ("Cau2b.py", [("abc12345\n1\n8\n", contains_line("5")), ("a1b2c3d4e5\n2\n9\n", contains_line("4")), ("abcdef\n1\n6\n", contains_line("0"))]),
         ("Cau3a.py", [("", contains_line("['apple', 'banana']"))]),

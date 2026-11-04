@@ -1,22 +1,27 @@
 # Kiểm tra Python - Thanh Danh 🐍
 
-Kho bài tập Python được sắp xếp theo từng đề. Hiện tại đã có lời giải và hướng dẫn chạy cho **Đề số 01 - CBPYTHON**.
+Kho bài tập Python được sắp xếp theo từng đề. Hiện tại repository có lời giải và bộ chấm tự động cho **Đề số 01 - CBPYTHON**.
 
 ## Đề đã hoàn thành
 
 - [Đề số 01 - CBPYTHON](De-01-CBPYTHON/README.md): 10 ý nhỏ, từ Câu 1a đến Câu 5b.
-- Có bộ chấm tự động dựa trên file kiểm thử đi kèm tài liệu giảng viên.
-- Có hướng dẫn chạy trên Visual Studio Code và phím tắt chấm bài.
+- Có bộ chấm tự động theo các test case trong gói tài liệu giảng viên cung cấp.
+- Có hướng dẫn chạy trong Visual Studio Code và phím tắt `Ctrl + Shift + B`.
 
-## Chấm tự động trong VS Code
+## Chạy chấm tự động
 
-1. Mở trực tiếp thư mục `De-01-CBPYTHON` bằng VS Code.
-2. Chọn **Terminal → New Terminal**.
-3. Chạy `python autograde_de1_v2.py`.
-4. Nhập thông tin sinh viên; chương trình sẽ chạy test và in điểm trên thang 10.
+Mở trực tiếp thư mục `De-01-CBPYTHON` bằng VS Code, chọn **Terminal → New Terminal**, rồi chạy:
 
-Có thể nhấn **Ctrl + Shift + B** để gọi task chấm điểm đã cấu hình sẵn.
+```bash
+python autograde_de1_v2.py
+```
+
+Nhập họ tên, MSSV và số máy (có thể bỏ trống số máy). Chương trình sẽ chạy các bài và in kết quả từng test cùng tổng điểm trên thang 10.
 
 ## Môi trường
 
-Python 3.9 trở lên. Không cần cài thư viện ngoài.
+- Python 3.9 trở lên.
+- Visual Studio Code và extension Python của Microsoft.
+- Không cần cài thêm thư viện ngoài.
+
+> Điểm hiển thị là kết quả chấm cục bộ theo bộ test trong tài liệu, không phải điểm chính thức trên hệ thống của giảng viên.
